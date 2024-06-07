@@ -1,0 +1,710 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #eaeaea;
+
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+/* Gaya navbar */
+.containerMovie {
+  display: flex;
+  flex-direction: column;
+  background-color: #eaeaea;
+  padding-bottom: 40px;
+}
+.navbar {
+  background-color: #1cb0f6; /* Warna latar belakang navbar */
+  color: #282828; /* Warna teks navbar */
+  display: flex;
+  flex-direction: column;
+}
+.navbar .top {
+  display: flex;
+  flex: 1;
+  padding: 10px;
+  align-items: center;
+}
+.navbar .top .darkMode { flex: 1;}
+.navbar .top .logo { flex: 1; }
+.navbar .top .search { flex: 1.5;}
+.navbar .top .search form { display:flex;  justify-content: flex-end;}
+.navbar .top .search form input{ flex: 1}
+.navbar .top .ham { flex: 1; justify-content: center; display: flex;}
+.navbar .top .searchOn {
+  display: none;
+}
+.navbar .bottom {
+  display: none;
+  background-color: #a1d6e2;
+  flex: 1;
+  padding: 20px;
+}
+.navbar .bottom .genreList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.navbar .bottom .genreList span {
+  cursor: pointer;
+}
+.navbar .logo {
+  flex: .4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.navbar button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+.navbar .top .hamburger {
+  width: 30px;
+  height: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  cursor: pointer;
+}
+.navbar .top .hamburger span {
+  height: 2px;
+  background-color: #282828;
+}
+.navbar .top .hamburger .span1 { width: 90% }
+.navbar .top .hamburger .span2 { width: 70% }
+.navbar .top .hamburger .span3 { width: 100% }
+.movieTitle {
+  cursor: pointer;
+}
+.search input{
+   width: 200px;
+   height: 27px;
+   border: none;
+   padding-left: 10px;
+}
+.search button{
+  color: #282828;
+  padding: 5px 10px;
+  margin-right: 16px;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+} 
+.navbar .bottom.on {
+  display: flex;
+  animation: drop 1s;
+}
+
+@keyframes drop {
+  0% {
+    transform: translateY(-50px);
+  } 50% {
+    transform: translateY(10px);
+  } 100% {
+    transform: none;
+  }
+}
+.searchResult {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  position: relative;
+  gap: 20px;
+  margin: 20px 0;
+  padding: 0 20px;
+}
+/* ... CSS setelahnya ... */
+
+/* Gaya dark mode */
+.darkMode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+/* Gaya div trending-films dan direkomendasikan */
+.trending-films, .direkomendasikan {
+  margin: 20px;
+}
+
+.film-item { /* Warna latar belakang film item */
+  margin: 10px;
+  padding: 10px;
+  position: relative;
+}
+/* ... CSS sebelumnya ... */
+
+/* Gaya hero section */
+.hero-section {
+  color: #eaeaea; /* Warna teks di hero section */
+  height: 90vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  transition: .7s ease;
+  background-image: url('https://img.freepik.com/free-photo/movie-background-collage_23-2149876030.jpg');
+}
+
+.hero-section h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.hero-section p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  background-color: #333; /* Warna tombol CTA */
+  color: #fff; /* Warna teks tombol CTA */
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #555; /* Warna tombol CTA saat dihover */
+}
+/* Gaya card film */
+.page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  position: relative;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.searchnav {
+  display: flex;
+  gap: 10px;
+}
+
+.film-card {
+  max-width: 200px;
+  min-width: 200px;
+  height: 330px;
+  box-shadow: 0px 0px 2px 2px #282828;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+  font-weight: bold;
+  position: relative;
+  cursor: pointer;
+  z-index: 1;
+}
+.rate {
+  display: flex;
+}
+.rate div {
+  background-color: rgba(0,0,0, .5);
+  padding: 3px 5px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: .6em;
+}
+.movieTitle {
+  text-align: center;
+  font-size: .7em;
+  padding: 5px;
+  text-shadow: 0 0 3px black;
+  background-color: rgba(0,0,0, .5);
+}
+.film-card .poster {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.film-card .star {
+  width: 11px;
+  border-radius: 50%;
+  transform: translateY(-1px);
+}
+
+.nextPrev {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -40px;
+  display: flex;
+  gap: 20px;
+}
+.btnShow {
+  padding: 7px 14px;
+  border: none;
+  background-color: rgb(0,180,0);
+  color: white;
+  font-size: .7em;
+  letter-spacing: 2px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.btnShow:hover {
+  background-color: rgb(0, 140, 0);
+  transition: .3s;
+}
+
+.cast h1 {
+  margin-left: 30px;
+}
+/* ... CSS setelahnya ... */
+
+@media only screen and (max-width: 500px) {
+  .navbar .top {
+    display: flex;
+  }
+  .navbar .top .darkMode {
+    flex: 1;
+  }  
+  .navbar .top .logo {
+    flex: 2;
+  }  
+  .navbar .top .searchOn {
+    flex: .5;
+  }
+  .navbar .top .ham {
+    flex: .5;
+  }
+  .navbar .top .searchOn {
+    display: flex;
+    color: #282828;
+  }
+  .search {
+    display: none;
+    left: 50%;
+    transform: translate(-50%);
+    position: absolute;
+    background-color: #a1d6e2;
+    top: 11%;
+    width: 100%;
+    padding: 5px 0;
+    z-index: 999;
+  }
+  .search form {
+    display: flex;
+    flex: 1;
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .search form button {
+  }
+  .search form input {
+    width: 80%;
+    border: 2px solid #282828;
+  }
+  .hero-section {
+    padding: 0 30px;
+  }
+  .hero-section h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .navbar .search.on {
+    display: flex;
+  }
+  .navbar .search.darkMode {
+    background-color: #982176;
+  }
+  .navbar .search.lightMode {
+    background-color: #a1d6e2;
+  }
+  .hero-section p {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .film-item {
+    padding: 0;
+  }
+  .page {
+    padding: 0;
+  }
+  .footer .footer-content {
+    flex-direction: column;
+  }
+  .darkOn { background-color: #982176; }
+  .lightOn { background-color: #a1d6e2; }
+  .movie_card .info_section .movie_header .moviePoster .detail h1 {
+    font-size: .3em;
+  }
+
+  .cast h1 {
+    margin-top: 20px;
+    margin-left: 20px;
+    text-align: center;
+    font-size: 1.4em;
+  }
+  .cast .actorList .actor_image {
+    width: 70px;
+  }
+  .cast .actorList .actor_info .actor_name {
+    font-size: .7em;
+  }
+  a .actor_card {
+    display: flex;
+    align-items: center;
+    width: 80px;
+    padding: 3px 0;
+    border-radius: 0px;
+  }
+  a .actor_info .actor_name {
+    font-size: .5em;
+  }
+  a .actor_info .as {
+    font-size: .5em;
+  }
+  a .actor_info .actor_role {
+    font-size: .5em;
+  }
+  .trailerOn {
+   width: 80vw;
+   height: 30vh;
+  }
+
+}
+
+  .nextPrev, .searchnav {
+    height: 30px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+/*detail section*/
+.movie_card {
+  display: flex;
+  flex-direction: column;
+  width: 98%;
+  min-height: 70vh;
+  margin: 10px auto;
+  border-radius: 10px;
+  transition: all 0.4s;
+  box-shadow: 0px 0px 120px -25px rgba(0, 0, 0, 0.5);
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+}
+
+.trl {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.info_section {
+  flex: 1;
+  background-blend-mode: multiply;
+  z-index: 2;
+  border-radius: 10px;
+/*background: linear-gradient(to top, #e5e6e6 20%, transparent 100%);*/
+  background-color: rgba(255, 255, 255, .6);
+  padding-bottom: 20px;
+}
+
+.movie_header {
+  padding: 25px;
+  box-sizing: border-box;
+}
+
+.movie_header h1 {
+  color: black;
+  font-weight: 400;
+}
+
+.movie_header h4 {
+  color: black;
+  font-weight: 400;
+}
+
+.minutes {
+  display: block;
+  margin-top: 15px;
+  color: black;
+  border-radius: 5px;
+}
+
+.type {
+  display: inline-block;
+  color: black;
+}
+
+.moviePoster {
+  display: flex;
+  padding:10px;
+  box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
+  gap: 30px;
+}
+
+.movie_desc {
+  width: 80%;
+  margin-left: 20px;
+}
+
+.movie_desc .text {
+  color: black;
+  text-align: justify;
+  line-height: 23px;
+}
+
+.actorList {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.actor_card {
+  width: 100px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.actorImg {
+  flex: 1;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.actor_image {
+  width: 100px;
+  min-height: 100px;
+}
+
+.actor_info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  flex: .7;
+  text-align: center;
+}
+
+.actor_name {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.actor_role {
+  font-size: 14px;
+  color: #777;
+}
+
+@media screen and (max-width: 700px) {
+  .film-card {
+    max-width: 100px;
+    min-width: 100px;
+    height: 160px;
+    font-size: .5em;
+  }
+  .movie_card {
+    background-position: center;
+  }
+  .movie_card .info_section .movie_header .moviePoster img {
+    width: 100px;
+    padding-top: 10px;
+  }
+  .movie_card .info_section .movie_header .moviePoster .detail {
+    justify-content: center;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+  }
+  .movie_card .info_section .movie_header .moviePoster .detail h1 {
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .movie_card .info_section .movie_header .moviePoster .detail h4 {
+    margin-top: 8px;
+    text-shadow: 0 0 0 black;
+    font-size: 10px;
+  }
+  .movie_card .info_section .movie_header .moviePoster .detail .minutes {
+    font-size: 10px;
+    text-shadow: 0 0 0 black;
+    padding: 0;
+  }
+  .movie_card .info_section .movie_header .moviePoster .detail .type {
+    font-size: 10px;
+    margin: 0;
+    text-shadow: 0 0 0 black;
+  }
+  .movie_desc .text {
+    font-size: 13px;
+    text-shadow: 0 0 0 black;
+  }
+  .actor_name {
+    font-weight: 500;
+  }
+  
+  .actor_role {
+    font-size: 14px;
+    color: #777;
+  }
+
+}
+.bright_back {
+  background: url("https://occ-0-2433-448.1.nflxso.net/art/cd5c9/3e192edf2027c536e25bb5d3b6ac93ced77cd5c9.jpg");
+}
+
+.tomb_back {
+  background: url("https://fsmedia.imgix.net/cd/c9/5e/ba/4817/4d9a/93f0/c776ec32ecbc/lara-crofts-neck-looks-unnatural-in-the-new-poster-for-tomb-raider.png");
+}
+
+.ave_back {
+  background: url("https://www.gannett-cdn.com/-mm-/c03fd140debe8ad4c05cf81a5cad7ad61a12ce52/c=0-1580-2985-3266&r=x803&c=1600x800/local/-/media/2017/06/09/USATODAY/USATODAY/636326272873599176-Black-Panther-Teaser.jpg");
+}
+
+.loading {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+}
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #1cb0f6;
+  border-color: #1cb0f6 transparent #1cb0f6 transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+.goToYT{
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
+  width: 220px;
+  padding: 3px;
+  justify-content: center;
+  padding: 4px 0px;
+  font-size: 16px;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(to right, silver, gold);
+  cursor: pointer;
+  margin: auto;
+  color: #eaeaea;
+}
+.videoOn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.resultInfo {
+  font-size: 1.6em;
+  padding: 20px;
+}
+.resultInfo .userInput {
+  font-style: italic;
+  color: red;
+}
+
+
+
+.footer {
+  background-color: #1cb0f6; /* Warna latar belakang navbar */
+  color: #282828; /* Warna teks navbar */
+  padding: 20px 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  gap: 10px;
+}
+.footer-logo {
+  flex: 1;
+}
+.footer-logo h3 {
+  margin: 0;
+}
+
+.footer-links,
+.footer-social {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  flex: 1;
+}
+
+.footer-links a,
+.footer-social a {
+  text-decoration: none;
+  color: #282828;
+  margin: 0 15px;
+  font-size: 14px;
+}
+
+.footer-bottom {
+  margin-top: 10px;
+}
+
+
+@media only screen and (min-width: 800px) {
+  .trailerOn {
+  max-width: 100vw;
+  width: 60vw;
+  max-height: 60vh;
+  height: 60vh;
+}
+
+}

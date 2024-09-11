@@ -7,7 +7,7 @@ const TrendingMovie = ({trendIndex, setTrendResultLength}) => {
     const [movie, setMovie] = useState()
 
     const fetchMovie = async () => {
-        await fetch(`${import.meta.env.VITE_TRENDING_URL}page=${trendIndex}`)
+        await fetch(`${import.meta.env.VITE_BASE_URL}/${import.meta.env.VITE_POPULAR_MOVIE}?api_key=${import.meta.env.VITE_API_KEY}&page=${trendIndex}`)
                 .then(response => response.json())
                 .then( result => {
                     setTrendResultLength(result)

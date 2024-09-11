@@ -202,9 +202,9 @@ a {
 }
 
 .film-card {
-  max-width: 200px;
-  min-width: 200px;
-  height: 330px;
+  max-width: 160px;
+  min-width: 160px;
+  height: 280px;
   box-shadow: 0px 0px 2px 2px #282828;
   display: flex;
   flex-direction: column;
@@ -243,6 +243,9 @@ a {
   width: 11px;
   border-radius: 50%;
   transform: translateY(-1px);
+}
+.as {
+  font-size: .7em;
 }
 
 .nextPrev {
@@ -372,13 +375,13 @@ a {
     border-radius: 0px;
   }
   a .actor_info .actor_name {
-    font-size: .5em;
+    font-size: .3em;
   }
   a .actor_info .as {
     font-size: .5em;
   }
   a .actor_info .actor_role {
-    font-size: .5em;
+    font-size: .3em;
   }
   .trailerOn {
    width: 80vw;
@@ -508,12 +511,12 @@ a {
 }
 
 .actor_name {
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 500;
 }
 
 .actor_role {
-  font-size: 14px;
+  font-size: 11px;
   color: #777;
 }
 

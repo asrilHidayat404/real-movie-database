@@ -9,7 +9,7 @@ const RecommendedMovie = ({recommendIndex}) => {
     const [movie, setMovie] = useState()
     const fetchMovie = async () => {
         try {
-            const response = await fetch(`${import.meta.env.VITE_RECOMMENDED_URL}page=${recommendIndex}`);
+            const response = await fetch(`${import.meta.env.VITE_BASE_URL}/${import.meta.env.VITE_RECOMMENDED_MOVIE}?api_key=${import.meta.env.VITE_API_KEY}&page=${recommendIndex}`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }

@@ -1,32 +1,43 @@
 import { useState } from "react"
 import RecommendedMovie from "./RecommendedMovie"
 import TrendingMovie from "./TrendingMovie"
+import MethodButton from "./MethodButton"
+import { useRef } from "react"
 
 const ContainerMovie = () => {
   const [trendIndex, setTrendIndex] = useState(1)
   const [recommendIndex, setRecommendIndex] = useState(1)
   const [trendResultLength, setTrendResultLength] = useState()
+  const trendingRef = useRef(null)
+  const recommendedRef = useRef(null)
 
   const nextTrending = () => {
     setTrendIndex(trendIndex + 1)
+    window.scrollTo({
+      top: trendingRef.current.offsetTop,
+      behavior: "smooth"
+    })
   }
   const prevTrending = () => {
     setTrendIndex((trendIndex === 1 ? 1 : trendIndex - 1))
   }
   const nextRecommended = () => {
     setRecommendIndex(recommendIndex + 1)
+    window.scrollTo({
+      top: recommendedRef.current.offsetTop,
+      behavior: "smooth"
+    })
   }
   const prevRecommended = () => {
     setRecommendIndex((recommendIndex === 1 ? 1 : recommendIndex - 1))
   }
-  console.log(recommendIndex)
   return (
     <div className="containerMovie">
       <div className="hero-section">
         <h1>Welcome to RMDB Search Engine</h1>
         <p>Find the best movies here. Start exploring now!</p>
       </div>
-      <div className="trending-films">
+      <div className="trending-films" ref={trendingRef}>
         <h2>Trending</h2>
         <div className="film-item">
           <div className="film-cards">
@@ -35,23 +46,13 @@ const ContainerMovie = () => {
             </div>
           </div>
           <div className="nextPrev">
-          <button
-            className="btnShow showMore"
-            onClick={prevTrending}
-          >
-            Prev
-          </button>
-          <span>Page {trendIndex}</span>
-          <button
-            className="btnShow showMore"
-            onClick={nextTrending}
-          >
-            Next
-          </button>
+            <MethodButton btnMethod={prevTrending} label={"Prev"} />
+            <span>Page {trendIndex}</span>
+            <MethodButton btnMethod={nextTrending} label={"Next"} />
           </div>
         </div>
       </div>
-      <div className="direkomendasikan">
+      <div className="direkomendasikan" ref={recommendedRef}>
         <h2>Recommended</h2>
         <div className="film-item">
           <div className="film-cards-recommended">
@@ -59,19 +60,9 @@ const ContainerMovie = () => {
             />
           </div>
           <div className="nextPrev">
-            <button
-              className="btnShow showMore"
-              onClick={prevRecommended}
-            >
-              Prev
-            </button>
+            <MethodButton btnMethod={prevRecommended} label={"Prev"} />
             <span>Page {recommendIndex}</span>
-            <button
-              className="btnShow showMore"
-              onClick={nextRecommended}
-            >
-              Next
-            </button>
+            <MethodButton btnMethod={nextRecommended} label={"Next"} />
           </div>
         </div>
       </div>

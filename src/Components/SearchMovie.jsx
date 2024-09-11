@@ -3,14 +3,17 @@ import { useEffect } from "react"
 import { Link } from "react-router-dom"
 import ReleasedObj from "../utils/parseReleaseDate"
 import star2 from "../assets/star2.png"
+import { useRef } from "react"
 
 const SearchMovie = ({searchMovieQuery}) => {
+  console.log(import.meta.env.VITE_API_KEY)
   const query = searchMovieQuery
   const [searchMovieResult, setSearchMovieResult] = useState([])
   const [resultIndex, setResultIndex] = useState(1)
+  const searchRef = useRef()
 
   const getSearchMovies = async () => {
-    await fetch(`${import.meta.env.VITE_SEARCH_MOVIE_URL}${query}&api_key=43a84b44b9e916d44359dd17e355faf5&page=${resultIndex}`)
+    await fetch(`${import.meta.env.VITE_BASE_URL}/${import.meta.env.VITE_SEARCH_MOVIE}?query=${query}&api_key=${import.meta.env.VITE_API_KEY}&page=${resultIndex}`)
       .then( response => response.json())
       .then( result => setSearchMovieResult(result))
   }
@@ -25,6 +28,10 @@ const SearchMovie = ({searchMovieQuery}) => {
         
     const ResultIndexNext = () => {
       setResultIndex( prev => prev === searchMovieResult.total_pages ? alert('nopage'): prev + 1)
+      window.scrollTo({
+        top: searchRef.current.offsetTop,
+        behavior: "smooth"
+      })
     }
     const ResultIndexPrev = () => {
       setResultIndex( prev => prev - 1)
@@ -32,7 +39,7 @@ const SearchMovie = ({searchMovieQuery}) => {
 
   return (
     <div>
-    <div className="resultInfo" style={{fontSize: ".9em"}}>
+    <div className="resultInfo" style={{fontSize: ".9em"}} ref={searchRef}>
       Search results from: <span className="userInput">{query}</span>
     </div>
     <div className="page page1">

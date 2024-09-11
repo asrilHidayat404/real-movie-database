@@ -17,9 +17,9 @@ const VideoDetail = () => {
     }
 
     useEffect( () => {
-        fetchData(`https://api.themoviedb.org/3/genre/movie/list?api_key=43a84b44b9e916d44359dd17e355faf5&language=en-US`, setGenre)
-        fetchData(`https://api.themoviedb.org/3/movie/${movie.Id}?api_key=43a84b44b9e916d44359dd17e355faf5`, setDuration)
-        fetchData(`https://api.themoviedb.org/3/movie/${movie.Id}/${import.meta.env.VITE_CREDITS}`, setCast)
+        fetchData(`${import.meta.env.VITE_BASE_URL}/genre/movie/list?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`, setGenre)
+        fetchData(`${import.meta.env.VITE_BASE_URL}/movie/${movie.Id}?api_key=${import.meta.env.VITE_API_KEY}`, setDuration)
+        fetchData(`${import.meta.env.VITE_BASE_URL}/movie/${movie.Id}/credits?api_key=${import.meta.env.VITE_API_KEY}`, setCast)
         if (!trailers) {
             getTrailer();
         }
@@ -32,7 +32,7 @@ const VideoDetail = () => {
     const casts = cast.cast
     const getTrailer = async () => {
         const id = movie.Id;
-        fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=43a84b44b9e916d44359dd17e355faf5&append_to_response=videos`)
+        fetch(`${import.meta.env.VITE_BASE_URL}/movie/${id}?api_key=${import.meta.env.VITE_API_KEY}&append_to_response=videos`)
             .then(response => response.json())
             .then(result => setTrailers(result.videos.results));
     }
